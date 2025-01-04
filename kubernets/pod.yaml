@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goserver
+  labels:
+    app: goserver # Pod goserver
+spec:
+  containers:
+    - name: goserver
+      image: mneresc/go-test-http

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goserver-np
+spec:
+  selector: #filtra todos os pods que estaram incorporados nesse service baseado no matchLabels
+    app: goserver
+  type: NodePort
+  ports:
+    - protocol: TCP
+      name: http-port-goserver
+      nodePort: 31000
+      targetPort: 8080
+      port: 8080

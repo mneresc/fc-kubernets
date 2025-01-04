@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goserver
+  template:
+  # mesmas informações do pod
+    metadata:
+      labels:
+        app: goserver
+    spec:
+      containers:
+        - name: goserver
+          image: mneresc/go-test-http
+          ports:
+            - containerPort: 8080
