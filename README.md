@@ -43,6 +43,8 @@ Estudo de kubernets da full cycle
 - Listar: kubectl get pod|replicasets
 - Deletar pod: kubctl delete pod|replicasets|deployment goserver
 - Histórico das versões: kubectl rollout history deployment goserver
+- Foward de portas pra testar local: kubectl port-forward svc/goserver 8080:8080
+
 ## Ferramentas 
 - minikube
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start) - emula cluster com mais de um nó em containers dockers

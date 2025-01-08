@@ -6,9 +6,14 @@ spec:
   selector: #filtra todos os pods que estaram incorporados nesse service baseado no matchLabels
     app: goserver
   type: LoadBalancer
-  loadBalancerIP: 192.168.1.80
+  externalIPs:
+    - 192.168.1.100
+  loadBalancerSourceRanges:
+    - 192.168.1.0/24
   ports:
     - protocol: TCP
       name: http-port-goserver
       port: 8080
       targetPort: 8080
+
+      # kubectl exec -it goserver-7bd47fdcf4-7qm8p -c meu-container -- bash

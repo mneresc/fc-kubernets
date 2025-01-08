@@ -15,6 +15,15 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: mneresc/go-test-http
+          image: mneresc/go-test-http:v1
           ports:
             - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: goserver-env
+          # env:
+          #   - name: NAME
+          #     valueFrom: 
+          #       configMapKeyRef:
+          #         name: goserver-env
+          #         key: NAME
