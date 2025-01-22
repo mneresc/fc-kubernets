@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-list
+data:
+  Itens: "1, 2, 3 exuzinhos, 4,5,6 exuzinhos, 7,8,9 exuzinhos, 10 na encruzilhada" 

@@ -15,12 +15,55 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: mneresc/go-test-http:v1
+          image: mneresc/go-test-http:v6.1
           ports:
             - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: goserver-env
+          livenessProbe:
+            httpGet: 
+              path: /healthz
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 5
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 5
+            successThreshold: 1
+          startupProbe:            
+            httpGet: 
+              path: /healthz
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 30
+            timeoutSeconds: 5
+            successThreshold: 1
+            # - secretRef:
+            #     name: goserver-secret
+          volumeMounts:
+            - mountPath: /go/list
+              name: config
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-list
+            items:
+              - key: Itens
+                path: lista.txt
           # env:
           #   - name: NAME
           #     valueFrom: 

@@ -11,29 +11,33 @@ Estudo de kubernets da full cycle
 ### Kubernets nodes
 * kublet
 * kubproxy
+
 ### Pod
 * Conjunto de containers que fica dentro de um nó [pod](./kubernets/pod.yaml)
+
 ### ReplicaSet
 * criar replicas do pod [replicaset](./kubernets/replicaset.yml)
 * problema do replicaset: Quanto atualizo o replicaset pra pegar a versão nova tenho que matar os pods ou o replicaset 
 * Resolvendo com Deployment 
+
 ### Deployment
 * Provisiona os Pods
 * ReplicaSets - replicar nos deploys
+
 ### Rollouts e Revisões
 * Retornar deployments para a versão anterior
 * kubectl rollout undo deployment goserver --to-revision=version
+
 ### Services
 - Services atua como load balancer
 - Expõe servicos de um deployment
 - Tipos:
     ClusterIP: Criar cluster com um ip interno que só participantes do cluster veem - usado para servicos que não quer export
     NodePort: Antiga forma de bater num cluster expondo para fora
-    LoadBalancer:
-
-- 
-
-
+    LoadBalancer: Cria um balanceador de carga externo que distribui o tráfego entre os nós do cluster. É o tipo mais comum e recomendado para serviços que precisam ser expostos para fora do cluster, pois fornece uma forma flexível e escalável de gerenciar o tráfego.
+## Probs
+- Liveness Prob: verifica de tempos em tempos com comandos
+- Rediness: Identifica se a aplicação está pronta para recever tráfego
 
 ## Comandos
 - Listar cluster: kubectl config get-clusters
@@ -52,4 +56,4 @@ Estudo de kubernets da full cycle
 - fazer apontamento do kubctl: kubectl cluster-info --context kind-neres-test
 
 -- Parei [Aula1-concluida]
--- Aula 4.1 - Entendendo objstos de configuracao
+-- Aula 
